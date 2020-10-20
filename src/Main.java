@@ -16,7 +16,13 @@ public class Main {
         GregorianCalendar gregorianCalendarObject = new GregorianCalendar(selectedYear,
                 selectMonth, 1);
         int days = gregorianCalendarObject.getActualMaximum(Calendar.DATE);
-        System.out.println(calendarDay);
+        int startInWeek = gregorianCalendarObject.get(Calendar.DAY_OF_WEEK);
+
+        gregorianCalendarObject = new GregorianCalendar(selectedYear, selectMonth, days);
+        int totalWeeks = gregorianCalendarObject.getActualMaximum(Calendar.WEEK_OF_MONTH);
+
+
+        System.out.println(totalWeeks);
 
     }
 }
