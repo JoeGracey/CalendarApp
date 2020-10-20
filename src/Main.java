@@ -32,13 +32,14 @@ public class Main {
                 if(count < startInWeek || (count - startInWeek + 1) > 31) {
                     System.out.print("__");
                     System.out.print(" ");
+
                 } else {
+
                     if(calendarDay == (count - startInWeek + 1) && calendarMonth == selectMonth && calendarYear == selectedYear) {
-                        System.out.print(count - startInWeek + 1);
-                        System.out.println(" ");
+                        System.out.print("'" + (count - startInWeek + 1) + "A" + "'");
+                        System.out.print(" ");
                     }
                 }
-
                 count++;
             }
         }
