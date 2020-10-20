@@ -25,17 +25,20 @@ public class Main {
 
         int count = 1; // Count the days
         for(int i = 1; i <= totalWeeks; i++) {
+            System.out.println(); // to next line
 
-            System.out.println(" "); // to next line
             for(int j = 1; j <= 7; j++) {
 
                 if(count < startInWeek || (count - startInWeek + 1) > 31) {
                     System.out.print("__");
                     System.out.print(" ");
                 } else {
-                    System.out.println(count - startInWeek + 1);
-                    System.out.println(" ");
+                    if(calendarDay == (count - startInWeek + 1) && calendarMonth == selectMonth && calendarYear == selectedYear) {
+                        System.out.print(count - startInWeek + 1);
+                        System.out.println(" ");
+                    }
                 }
+
                 count++;
             }
         }
