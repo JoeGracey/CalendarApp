@@ -26,12 +26,18 @@ public class Main {
         int count = 1; // Count the days
         for(int i = 1; i <= totalWeeks; i++) {
 
+            System.out.println(" "); // to next line
             for(int j = 1; j <= 7; j++) {
 
+                if(count < startInWeek || (count - startInWeek + 1) > 31) {
+                    System.out.print("__");
+                    System.out.print(" ");
+                } else {
+                    System.out.println(count - startInWeek + 1);
+                    System.out.println(" ");
+                }
+                count++;
             }
-            System.out.print(i + " ");
         }
-        System.out.println(totalWeeks);
-
     }
 }
