@@ -36,12 +36,19 @@ public class Main {
                 } else {
 
                     if(calendarDay == (count - startInWeek + 1) && calendarMonth == selectMonth && calendarYear == selectedYear) {
-                        System.out.print("'" + (count - startInWeek + 1) + "A" + "'");
+                        System.out.print("'" + getDay((count - startInWeek + 1)) + "'");
+                        System.out.print(" ");
+                    } else {
+                        System.out.print(getDay((count - startInWeek + 1)));
                         System.out.print(" ");
                     }
                 }
                 count++;
             }
         }
+    }
+
+    private static int getDay(int i) {
+        return i;
     }
 }
