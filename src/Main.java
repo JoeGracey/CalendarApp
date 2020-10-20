@@ -13,5 +13,10 @@ public class Main {
         int calendarMonth = calendarObject.get(Calendar.MONTH);
         int calendarYear = calendarObject.get(Calendar.YEAR);
 
+        GregorianCalendar gregorianCalendarObject = new GregorianCalendar(selectedYear,
+                selectMonth, 1);
+        int days = gregorianCalendarObject.getActualMaximum(Calendar.DATE);
+        System.out.println(calendarDay);
+
     }
 }
