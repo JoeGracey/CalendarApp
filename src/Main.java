@@ -6,22 +6,32 @@ public class Main {
     public static void main(String[] args) {
 
         int selectedYear = 2020;
-        int selectMonth = 2;
+        int selectedMonth = 9;
 
         Calendar calendarObject = new GregorianCalendar();
         int calendarDay = calendarObject.get(Calendar.DATE);
         int calendarMonth = calendarObject.get(Calendar.MONTH);
         int calendarYear = calendarObject.get(Calendar.YEAR);
 
-        // Count the months
+        // TESTING //
+        System.out.println(calendarDay + " (day of the week)");
+        System.out.println(calendarMonth + " (month of the year)");
+        System.out.println(calendarYear + " (which year it is)");
+        // TESTING //
+
         GregorianCalendar gregorianCalendarObject = new GregorianCalendar(selectedYear,
-                selectMonth, 1);
+                selectedMonth, 1);
         int days = gregorianCalendarObject.getActualMaximum(Calendar.DATE);
         int startInWeek = gregorianCalendarObject.get(Calendar.DAY_OF_WEEK);
 
-        // Count the weeks
-        gregorianCalendarObject = new GregorianCalendar(selectedYear, selectMonth, days);
+        // TESTING //
+        System.out.println(days + " (days in the current month)");
+        System.out.println(startInWeek + " (day starting the first week)");
+        // TESTING //
+
+        gregorianCalendarObject = new GregorianCalendar(selectedYear, selectedMonth, days);
         int totalWeeks = gregorianCalendarObject.getActualMaximum(Calendar.WEEK_OF_MONTH);
+        System.out.println(totalWeeks + " (total weeks in selectedMonth)"); // <- <- <- <-
 
         int count = 1; // Count the days
         for(int i = 1; i <= totalWeeks; i++) {
@@ -35,7 +45,7 @@ public class Main {
 
                 } else {
 
-                    if(calendarDay == (count - startInWeek + 1) && calendarMonth == selectMonth && calendarYear == selectedYear) {
+                    if(calendarDay == (count - startInWeek + 1) && calendarMonth == selectedMonth && calendarYear == selectedYear) {
                         System.out.print("'" + getDay((count - startInWeek + 1)) + "'");
                         System.out.print(" ");
                     } else {
