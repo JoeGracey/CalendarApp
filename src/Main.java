@@ -1,12 +1,16 @@
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        int selectedYear = 2020;
-        int selectedMonth = 9;
+        Scanner scannerObject = new Scanner(System.in);
+        System.out.print("Enter the Year: ");
+        int selectedYear = scannerObject.nextInt();
+        System.out.print("Enter the month: ");
+        int selectedMonth = scannerObject.nextInt() - 1; // 0 based so July = 7 - 1.
 
         Calendar calendarObject = new GregorianCalendar();
         int calendarDay = calendarObject.get(Calendar.DATE);
@@ -14,7 +18,7 @@ public class Main {
         int calendarYear = calendarObject.get(Calendar.YEAR);
 
         // TESTING //
-        System.out.println(calendarDay + " (day of the week)");
+        System.out.println(calendarDay + " (day of the month)");
         System.out.println(calendarMonth + " (month of the year)");
         System.out.println(calendarYear + " (which year it is)");
         // TESTING //
@@ -31,7 +35,10 @@ public class Main {
 
         gregorianCalendarObject = new GregorianCalendar(selectedYear, selectedMonth, days);
         int totalWeeks = gregorianCalendarObject.getActualMaximum(Calendar.WEEK_OF_MONTH);
-        System.out.println(totalWeeks + " (total weeks in selectedMonth)"); // <- <- <- <-
+
+        // TESTING //
+        System.out.println(totalWeeks + " (total weeks in selectedMonth)");
+        // TESTING //
 
         int count = 1; // Count the days
         for(int i = 1; i <= totalWeeks; i++) {
@@ -58,7 +65,14 @@ public class Main {
         }
     }
 
-    private static int getDay(int i) {
-        return i;
+    private static String getDay(int i) {
+
+        String sDate = Integer.toString(i);
+
+        if(sDate.length() == 1) {
+            sDate = "0" + sDate;
+            return sDate;
+        }
+        return sDate;
     }
 }
