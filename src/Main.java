@@ -13,34 +13,28 @@ public class Main {
         int selectedMonth = scannerObject.nextInt() - 1; // 0 based so July = 7 - 1.
 
         Calendar calendarObject = new GregorianCalendar();
-        int calendarDay = calendarObject.get(Calendar.DATE);
-        int calendarMonth = calendarObject.get(Calendar.MONTH);
-        int calendarYear = calendarObject.get(Calendar.YEAR);
-
-        // TESTING //
-        System.out.println(calendarDay + " (day of the month)");
-        System.out.println(calendarMonth + " (month of the year)");
-        System.out.println(calendarYear + " (which year it is)");
-        // TESTING //
+        int calendarDay = calendarObject.get(Calendar.DATE); // day of the month
+        int calendarMonth = calendarObject.get(Calendar.MONTH); // month of the year
+        int calendarYear = calendarObject.get(Calendar.YEAR); // which year it is
 
         GregorianCalendar gregorianCalendarObject = new GregorianCalendar(selectedYear,
                 selectedMonth, 1);
-        int days = gregorianCalendarObject.getActualMaximum(Calendar.DATE);
-        int startInWeek = gregorianCalendarObject.get(Calendar.DAY_OF_WEEK);
-
-        // TESTING //
-        System.out.println(days + " (days in the current month)");
-        System.out.println(startInWeek + " (day starting the first week)");
-        // TESTING //
+        int days = gregorianCalendarObject.getActualMaximum(Calendar.DATE); // days in month
+        int startInWeek = gregorianCalendarObject.get(Calendar.DAY_OF_WEEK); // day starting
+        // first week
 
         gregorianCalendarObject = new GregorianCalendar(selectedYear, selectedMonth, days);
-        int totalWeeks = gregorianCalendarObject.getActualMaximum(Calendar.WEEK_OF_MONTH);
-
-        // TESTING //
-        System.out.println(totalWeeks + " (total weeks in selectedMonth)");
-        // TESTING //
+        int totalWeeks = gregorianCalendarObject.getActualMaximum(Calendar.WEEK_OF_MONTH); //
+        // total week in selectedMonth
 
         int count = 1; // Count the days
+
+        String[] months = {"January", "February", "March", "April", "May", "June", "July",
+                "August", "September", "October", "November", "December"};
+        System.out.println(months[selectedMonth] + " " + selectedYear);
+
+        System.out.print("Su Mo Tu We Th Fr Sa");
+
         for(int i = 1; i <= totalWeeks; i++) {
             System.out.println(); // to next line
 
@@ -53,10 +47,10 @@ public class Main {
                 } else {
 
                     if(calendarDay == (count - startInWeek + 1) && calendarMonth == selectedMonth && calendarYear == selectedYear) {
-                        System.out.print("'" + getDay((count - startInWeek + 1)) + "'");
+                        System.out.print("'" + convertDateToString((count - startInWeek + 1)) + "'");
                         System.out.print(" ");
                     } else {
-                        System.out.print(getDay((count - startInWeek + 1)));
+                        System.out.print(convertDateToString((count - startInWeek + 1)));
                         System.out.print(" ");
                     }
                 }
@@ -65,14 +59,14 @@ public class Main {
         }
     }
 
-    private static String getDay(int i) {
+    private static String convertDateToString(int i) {
 
-        String sDate = Integer.toString(i);
+        String stringDate = Integer.toString(i);
 
-        if(sDate.length() == 1) {
-            sDate = "0" + sDate;
-            return sDate;
+        if(stringDate.length() == 1) {
+            stringDate = "0" + stringDate;
+            return stringDate;
         }
-        return sDate;
+        return stringDate;
     }
 }
